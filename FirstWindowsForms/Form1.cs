@@ -27,7 +27,7 @@ namespace FirstWindowsForms
                 dialogResult = MessageBox.Show("It begins!" , "Run", MessageBoxButtons.OK);
                 if(dialogResult == DialogResult.OK)
                 {
-                    this.Close();
+                    timer1.Start();
                 }
             }
             else if (dialogResult == DialogResult.No)
@@ -39,6 +39,19 @@ namespace FirstWindowsForms
                 }
             }
             
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity > 0.0)
+            {
+                this.Opacity -= 0.025;
+            }
+            else
+            {
+                timer1.Stop();
+                Application.Exit();
+            }
         }
     }
 }
